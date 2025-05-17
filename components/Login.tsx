@@ -1,51 +1,9 @@
 import { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Dimensions, Image } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Dimensions, Image, StyleSheet } from "react-native";
 
 export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
-    const styles = {
-        container: {
-            width: "100%" as `${number}%`,
-            height: Dimensions.get('window').height,
-            display: "flex" as "flex",
-            flex: 1,
-            justifyContent: "center" as "center",
-            alignItems: "center" as "center",
-            backgroundColor: "#f5f5f5",
-        },
-        title: {
-            fontSize: 24,
-            marginBottom: 20,
-        },
-        input: {
-            width: "80%" as `${number}%`,
-            padding: 10,
-            marginVertical: 10,
-            borderWidth: 1,
-            borderColor: "#ccc",
-            borderRadius: 5,
-        },
-        button: {
-            submit: {
-                backgroundColor: "#007BFF",
-                paddingVertical: 10,
-                paddingHorizontal: 20,
-                borderRadius: 5,
-            },
-            cancel: {
-                backgroundColor: "#FF5733",
-                paddingVertical: 10,
-                paddingHorizontal: 20,
-                borderRadius: 5,
-            },
-        },
-        buttonText: {
-            color: "#fff",
-            fontSize: 16,
-        },
-    };
 
     const handleSubmit = () => {
         alert("Login successful!");
@@ -76,13 +34,53 @@ export default function Login() {
             />
 
             <View style={{ flexDirection: "row", justifyContent: "space-between", gap: 10 }}>
-                <TouchableOpacity style={styles.button.submit} onPress={handleSubmit}>
+                <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button.cancel} onPress={handleCancel}>
+                <TouchableOpacity style={styles.cancelButton} onPress={handleCancel}>
                     <Text style={styles.buttonText}>Cancel</Text>
                 </TouchableOpacity>
             </View>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        width: "100%" as `${number}%`,
+        height: Dimensions.get('window').height,
+        display: "flex" as "flex",
+        flex: 1,
+        justifyContent: "center" as "center",
+        alignItems: "center" as "center",
+        backgroundColor: "#f5f5f5",
+    },
+    title: {
+        fontSize: 24,
+        marginBottom: 20,
+    },
+    input: {
+        width: "80%" as `${number}%`,
+        padding: 10,
+        marginVertical: 10,
+        borderWidth: 1,
+        borderColor: "#ccc",
+        borderRadius: 5,
+    },
+    submitButton: {
+        backgroundColor: "#007BFF",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+    },
+    cancelButton: {
+        backgroundColor: "#FF5733",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+    },
+    buttonText: {
+        color: "#fff",
+        fontSize: 16,
+    },
+})
